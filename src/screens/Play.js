@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Text, View, StyleSheet, Image, TouchableHighlight } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler';
-
+import Drum from '../components/Drum';
 
 class Home extends Component {
     render() {
@@ -12,8 +12,8 @@ class Home extends Component {
                     <Image style={styles.txtScore} source={require('../assets/MCR.png')} />
                     <Text style={styles.txtNumber}>Score</Text>
                     <Text style={styles.txtNumber}>0</Text>
-                    <TouchableHighlight style={[styles.buttonContainer, styles.loginButton]} onPress={() => this.props.navigation.navigate('Play')}>
-                        <Text style={styles.loginText}>Play</Text>
+                    <TouchableHighlight style={{ marginTop: 10 }}>
+                        <Drum />
                     </TouchableHighlight>
                 </View>
                 <Image source={require('../assets/mcr2.png')} style={styles.backgroundBottomLeft} />
@@ -64,8 +64,7 @@ const styles = StyleSheet.create({
     btnPlay: {
         width: 200,
         height: 80,
-        backgroundColor: 'black',
-        top: 80
+        backgroundColor: 'black'
 
     },
     container: {
@@ -73,21 +72,6 @@ const styles = StyleSheet.create({
         margin: 0,
         alignItems: 'center',
         justifyContent: 'center'
-    },
-    buttonContainer: {
-        height: 45,
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginBottom: 0,
-        width: 200,
-        borderRadius: 30,
-    },
-    loginButton: {
-        backgroundColor: "#FF5500",
-    },
-    loginText: {
-        color: 'white',
-    },
+    }
 })
 

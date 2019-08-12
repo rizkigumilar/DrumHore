@@ -10,7 +10,7 @@ import {
     Image,
     Alert
 } from 'react-native';
-import axios from 'axios'
+import Logo from '../assets/MCR.png';
 
 class Register extends Component {
 

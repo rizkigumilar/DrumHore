@@ -68,6 +68,26 @@ const user = (state = initialState, action) => {
                 isFulfilled: true,
                 userList: action.payload.data.result
             };
+        case 'GET_SCORE_PENDING':
+            return {
+                ...state,
+                isLoading: true,
+                isFulfilled: false,
+                isRejected: false
+            };
+        case 'GET_SCORES_REJECTED':
+            return {
+                ...state,
+                isLoading: false,
+                isRejected: true
+            };
+        case 'GET_SCORES_FULFILLED':
+            return {
+                ...state,
+                isLoading: false,
+                isFulfilled: true,
+                userList: action.payload.data.result
+            };
 
         default:
             return state;

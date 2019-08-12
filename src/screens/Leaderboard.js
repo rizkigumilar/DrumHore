@@ -8,6 +8,7 @@ import {
     TouchableOpacity
 } from 'react-native';
 import Leaderboard from 'react-native-leaderboard'
+import { getLeaderboard } from '../publics/redux/actions/user';
 class boards extends Component {
     state = {
         data: [

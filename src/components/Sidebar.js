@@ -15,7 +15,7 @@ class SideBar extends Component {
 
                 <View style={styles.viewProfileData}>
                     <Text style={styles.profileData}>Ujang Smith</Text>
-                    <Text style={styles.profileData}>@gmail.com</Text>
+                    <Text style={styles.profileData}>ujanxxx@gmail.com</Text>
                     <Text style={styles.profileData}>Score: 521</Text>
                 </View>
 

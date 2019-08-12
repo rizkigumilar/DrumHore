@@ -14,7 +14,7 @@ import {
     Alert,
     ImageBackground
 } from 'react-native';
-import Logo from '../assets/drums-transparant-png-8.png';
+import Logo from '../assets/mcr2.png';
 import { NavigationEvents } from 'react-navigation';
 import { ScrollView } from 'react-native-gesture-handler';
 
@@ -164,10 +164,6 @@ class Login extends Component {
                                     <Text style={styles.loginText}>Login</Text>
                                 </TouchableHighlight>
 
-                                <TouchableHighlight style={styles.buttonContainer} >
-                                    <Text>Forgot your password?</Text>
-                                </TouchableHighlight>
-
                                 <TouchableHighlight style={styles.buttonContainer} onPress={() => this.props.navigation.navigate('Register')}>
                                     <Text>Register</Text>
                                 </TouchableHighlight>
@@ -207,8 +203,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#DCDCDC',
     },
     logo: {
-        height: 260,
-        width: 260
+        height: 335,
+        width: 350
     },
     inputContainer: {
         backgroundColor: '#FFFFFF',

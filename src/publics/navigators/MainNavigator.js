@@ -5,7 +5,7 @@ import Home from '../../screens/Home'
 import Login from '../../screens/LoginForm'
 import Register from '../../screens/Register'
 import LeaderBoards from '../../screens/Leaderboard'
-// import Main from '../../screens/Main'
+import Play from '../../screens/Play'
 import SideBar from '../../components/Sidebar';
 import Avatar from '../../components/Avatar';
 import IconLeaderBoards from '../../components/IconLeaderboard';
@@ -20,12 +20,12 @@ const StackNavigation = createStackNavigator({
     },
     Login,
     Register,
-    // Main: {
-    //     screen: Main,
-    //     navigationOptions: {
-    //         header: null
-    //     }
-    // },
+    Play: {
+        screen: Play,
+        navigationOptions: {
+            header: null
+        }
+    },
     LeaderBoards
 }, {
         initialRouteName: 'Home'
@@ -36,10 +36,10 @@ const MainNavigation = createDrawerNavigator({
 }, {
         contentComponent: SideBar,
         drawerBackgroundColor: 'rgba(255,255,255,.9)',
-        overlayColor: '#6b52ae',
+        overlayColor: 'black',
         contentOptions: {
             activeTintColor: '#fff',
-            activeBackgroundColor: '#6b52ae',
+            activeBackgroundColor: 'black',
         },
     })
 
