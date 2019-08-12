@@ -106,7 +106,7 @@ class Register extends Component {
                 </View>
 
                 <View style={styles.inputContainer}>
-
+                    <Image style={styles.inputIcon} source={{ uri: 'https://png.pngtree.com/svg/20170602/user_circle_1048392.png' }} />
                     <TextInput style={styles.inputs}
                         placeholder="username"
                         keyboardType="default"
@@ -186,7 +186,7 @@ const styles = StyleSheet.create({
         borderRadius: 30,
     },
     loginButton: {
-        backgroundColor: "#00b5ec",
+        backgroundColor: "#FF5500",
     },
     loginText: {
         color: 'white',

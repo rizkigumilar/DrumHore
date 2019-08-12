@@ -14,8 +14,8 @@ class SideBar extends Component {
                 <Image source={require('../assets/135b131017ea0bf1b33a7168d176ada6.png')} style={styles.profileImage} resizeMode='cover' />
 
                 <View style={styles.viewProfileData}>
-                    <Text style={styles.profileData}>Jill Valentine</Text>
-                    <Text style={styles.profileData}>jill@gmail.com</Text>
+                    <Text style={styles.profileData}>Ujang Smith</Text>
+                    <Text style={styles.profileData}>@gmail.com</Text>
                     <Text style={styles.profileData}>Score: 521</Text>
                 </View>
 
@@ -31,16 +31,16 @@ class SideBar extends Component {
 
 const styles = StyleSheet.create({
     imageBackground: {
-        backgroundColor: '#3F51B5',
+        backgroundColor: 'transparent',
         width: 'auto',
         height: 180
     },
     profileImage: {
         position: 'absolute',
         borderWidth: 2,
-        borderColor: 'blue',
+        borderColor: 'black',
         alignSelf: 'flex-start',
-        left: 20,
+        left: 100,
         top: 10,
         width: 80,
         height: 80,
@@ -52,10 +52,11 @@ const styles = StyleSheet.create({
         marginHorizontal: 20
     },
     profileData: {
-        color: '#ffffff',
+        color: 'black',
         fontWeight: 'bold',
         fontSize: 14,
-        marginVertical: 1
+        marginVertical: 1,
+        left: 75
     },
     flhome: {
         width: "100%",
@@ -72,7 +73,7 @@ const styles = StyleSheet.create({
         fontSize: 18
     },
     leaderBoardColor: {
-        color: '#FFD700'
+        color: 'black'
     }
 })
 

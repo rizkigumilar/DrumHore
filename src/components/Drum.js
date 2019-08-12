@@ -1,13 +1,21 @@
 import React, { Component } from 'react'
-import { View, StyleSheet, TouchableHighlight } from 'react-native'
+import { View, StyleSheet, TouchableHighlight, Text, Button } from 'react-native'
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import Sound from 'react-native-sound';
 
 class Drum extends Component {
+
+    constructor() {
+        super();
+    }
+
+
     render() {
         return (
             <View style={styles.container}>
                 <View style={{ top: '5%' }}>
                     <View
-                        style={{ flexDirection: 'row', justifyContent: 'space-around', marginHorizontal: 50 }}>
+                        style={{ flexDirection: 'row', justifyContent: 'space-around', marginHorizontal: 110, marginBottom: 20 }}>
                         <SmallDrum />
                         <SmallDrum />
                     </View>
@@ -25,30 +33,49 @@ class Drum extends Component {
 export default Drum
 
 class BigDrum extends Component {
+
+    onButtonPress() {
+        const requireAudio = require('../assets/Sound/Snare7.wav');
+        const s = new Sound(requireAudio, (e) => { if (e) { console.log('Error in SOUND', e); return; } s.play(() => s.release()); });
+    }
+
+    onButtPress() {
+        const requireAudio = require('../assets/Sound/Snare7.wav');
+        const s = new Sound(requireAudio, (e) => { if (e) { console.log('Error in SOUND', e); return; } s.play(() => s.release()); });
+    }
     render() {
         return (
             <TouchableHighlight
-                activeOpacity={0.9}
+                activeOpacity={0.01}
                 colo
                 style={styles.bigDrum}
             >
-                <View style={styles.bigDrumOutter}>
-                    <View style={styles.bigDrumInner} />
-                </View>
+                <TouchableOpacity style={styles.bigDrumOutter} onPress={this.onButtonPress.bind(this)}>
+                    <Text style={styles.bigDrumInner}></Text>
+                </TouchableOpacity>
             </TouchableHighlight>
         )
     }
 }
 
 class SmallDrum extends Component {
+    onButtonPress() {
+        const requireAudio = require('../assets/Sound/Cymbal10.wav');
+        const s = new Sound(requireAudio, (e) => { if (e) { console.log('Error in SOUND', e); return; } s.play(() => s.release()); });
+    }
+
+    onButtPress() {
+        const requireAudio = require('../assets/Sound/Cymbal10.wav');
+        const s = new Sound(requireAudio, (e) => { if (e) { console.log('Error in SOUND', e); return; } s.play(() => s.release()); });
+    }
     render() {
         return (
             <TouchableHighlight
-                activeOpacity={0.9}
+                activeOpacity={0.1}
                 style={styles.smallDrum}>
-                <View style={styles.smallDrumOutter}>
-                    <View style={styles.smallDrumInner} />
-                </View>
+                <TouchableOpacity style={styles.smallDrumOutter} onPress={this.onButtonPress.bind(this)}>
+                    <Text style={styles.smallDrumInner} > </Text>
+                </TouchableOpacity>
             </TouchableHighlight>
         )
     }
@@ -66,7 +93,7 @@ const styles = StyleSheet.create({
         width: 100,
         height: 100,
         borderRadius: 100 / 2,
-        backgroundColor: '#EECECE',
+        backgroundColor: '#FF5500',
         alignItems: 'center',
         justifyContent: 'center',
         elevation: 8
@@ -75,7 +102,7 @@ const styles = StyleSheet.create({
         width: 50,
         height: 50,
         borderRadius: 100 / 2,
-        backgroundColor: '#E3A6AE',
+        backgroundColor: '#b60d0d',
         position: 'absolute'
     },
     smallDrum: {

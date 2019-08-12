@@ -207,8 +207,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#DCDCDC',
     },
     logo: {
-        height: 215,
-        width: 250
+        height: 260,
+        width: 260
     },
     inputContainer: {
         backgroundColor: '#FFFFFF',
@@ -244,7 +244,7 @@ const styles = StyleSheet.create({
         borderRadius: 30,
     },
     loginButton: {
-        backgroundColor: "#00b5ec",
+        backgroundColor: "#FF5500",
     },
     loginText: {
         color: 'white',
