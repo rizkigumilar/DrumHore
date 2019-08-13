@@ -84,14 +84,4 @@ export const logout = (userid) => {
     }
 }
 
-export const getLeaderboard = () => {
-    return {
-        type: 'GET_SCORES',
-        payload: axios.get(`${url}/scores`,
-            {
-                headers: {
-                    "authorization": "x-control-app"
-                }
-            })
-    }
-}
+

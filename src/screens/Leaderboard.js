@@ -7,17 +7,65 @@ import {
     StatusBar,
     TouchableOpacity
 } from 'react-native';
+import { connect } from 'react-redux';
 import Leaderboard from 'react-native-leaderboard'
-import { getLeaderboard } from '../publics/redux/actions/user';
+import { getLeaderboard } from '../publics/redux/actions/score';
+
 class boards extends Component {
     state = {
         data: [
-            { userName: 'Joe', highScore: 52 },
-            { userName: 'Jenny', highScore: 120 }
+            { userName: 'Ujanx', highScore: 520056 },
+            { userName: 'Jajang', highScore: 120874 },
+            { userName: 'Samsul', highScore: 145874 },
         ]
     }
+    // state = {
+    //     data: [],
+    //     index: '',
+    //     userid: null,
+    //     name: '',
+    //     scores: ''
+    // };
+    // constructor(props) {
+    //     super(props);
+    // }
+
+    // componentDidMount = async () => {
+    //     await this.props.dispatch(getLeaderboard());
+    //     this.setState({
+    //         data: this.props.data,
+    //     });
+    //     AsyncStorage.getItem('userid').then((value) => {
+    //         this.setState({ userid: value })
+    //     });
+    //     AsyncStorage.getItem('name').then((value) => {
+    //         this.setState({ name: value })
+    //     });
+    //     this.subs = [
+    //         this.props.navigation.addListener('willBlur', async () => {
+    //             await this.props.dispatch(getLeaderboard());
+    //             this.setState({
+    //                 data: this.props.data,
+    //             })
+    //         }),
+    //         this.props.navigation.addListener('willFocus', async () => {
+    //             await this.props.dispatch(getLeaderboard());
+    //             this.setState({
+    //                 data: this.props.data,
+    //             })
+    //         }),
+    //     ]
+    // };
+
+    // componentWillUnmount = () => {
+    //     this.subs.forEach(sub => {
+    //         sub.remove();
+    //     });
+    // };
+
     render() {
-        let index = 1
+        console.log("props " + this.props.data)
+        console.log("state " + this.state.data)
         return (
             <View style={style.container}>
                 <View style={style.header}>
@@ -33,7 +81,7 @@ class boards extends Component {
                     </View>
                     <View>
                         <Image style={style.img}
-                            source={require('../assets/135b131017ea0bf1b33a7168d176ada6.png')} />
+                            source={require('../assets/Image/135b131017ea0bf1b33a7168d176ada6.png')} />
                     </View>
                     <View style={style.text2}>
                         <Text style={{
@@ -56,7 +104,14 @@ class boards extends Component {
         )
     }
 }
-export default boards
+const mapStateToProps = state => {
+    return {
+        data: state.data,
+    };
+};
+
+export default connect(mapStateToProps)(boards)
+
 const style = StyleSheet.create({
     container: {
         backgroundColor: 'white',

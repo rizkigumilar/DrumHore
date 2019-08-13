@@ -15,7 +15,7 @@ class Avatar extends Component {
                 <TouchableOpacity onPress={() => {
                     this.props.navigation.openDrawer()
                 }}>
-                    <Thumbnail source={require('../assets/135b131017ea0bf1b33a7168d176ada6.png')} style={styles.Avatar} />
+                    <Thumbnail source={require('../assets/Image/135b131017ea0bf1b33a7168d176ada6.png')} style={styles.Avatar} />
                 </TouchableOpacity>
             </View>
         )

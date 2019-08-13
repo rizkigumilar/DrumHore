@@ -14,7 +14,7 @@ import {
     Alert,
     ImageBackground
 } from 'react-native';
-import Logo from '../assets/mcr2.png';
+import Logo from '../assets/Image/mcr2.png';
 import { NavigationEvents } from 'react-navigation';
 import { ScrollView } from 'react-native-gesture-handler';
 

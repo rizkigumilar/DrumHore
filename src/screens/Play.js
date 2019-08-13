@@ -7,17 +7,16 @@ class Home extends Component {
     render() {
         return (
             <View>
-                <Image source={require('../assets/mcr4.png')} style={styles.backgroundTopRight} />
+                <Image source={require('../assets/Image/mcr4.png')} style={styles.backgroundTopRight} />
                 <View style={styles.container}>
-                    <Image style={styles.txtScore} source={require('../assets/MCR.png')} />
-                    <Text style={styles.txtNumber}>Score</Text>
-                    <Text style={styles.txtNumber}>0</Text>
+                    <Image style={styles.txtScore} source={require('../assets/Image/MCR.png')} />
+
                     <TouchableHighlight style={{ marginTop: 10 }}>
                         <Drum />
                     </TouchableHighlight>
                 </View>
-                <Image source={require('../assets/mcr2.png')} style={styles.backgroundBottomLeft} />
-                <Image source={require('../assets/mcr6.png')} style={styles.backgroundBottomRight} />
+                <Image source={require('../assets/Image/mcr2.png')} style={styles.backgroundBottomLeft} />
+                <Image source={require('../assets/Image/mcr6.png')} style={styles.backgroundBottomRight} />
             </View>
         )
     }
@@ -52,7 +51,7 @@ const styles = StyleSheet.create({
         color: '#3F51B5',
         fontWeight: 'bold',
         bottom: 40,
-        marginTop: 400
+        marginTop: 250
     },
     txtNumber: {
         fontFamily: 'Roboto',

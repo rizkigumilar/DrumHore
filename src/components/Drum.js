@@ -8,21 +8,66 @@ class Drum extends Component {
     constructor() {
         super();
     }
+    onButtonPress() {
+        const requireAudio = require('../assets/Sound/Snare7.wav');
+        const s = new Sound(requireAudio, (e) => { if (e) { console.log('Error in SOUND', e); return; } s.play(() => s.release()); });
+    }
+    onButtonPress2() {
+        const requireAudio = require('../assets/Sound/Snare7.wav');
+        const s = new Sound(requireAudio, (e) => { if (e) { console.log('Error in SOUND', e); return; } s.play(() => s.release()); });
+    }
+    onButtPress() {
+        const requireAudio = require('../assets/Sound/Cymbal10.wav');
+        const s = new Sound(requireAudio, (e) => { if (e) { console.log('Error in SOUND', e); return; } s.play(() => s.release()); });
+    }
+    onButtPress2() {
+        const requireAudio = require('../assets/Sound/Cymbal10.wav');
+        const s = new Sound(requireAudio, (e) => { if (e) { console.log('Error in SOUND', e); return; } s.play(() => s.release()); });
+    }
 
 
     render() {
         return (
             <View style={styles.container}>
-                <View style={{ top: '5%' }}>
+                <View style={{ top: '2%' }}>
+                    <Text style={styles.txtNumber}>Score</Text>
+                    <Text style={styles.txtNumber1}>Combo : 5</Text>
+                    <Text style={styles.txtNumber0}>0</Text>
                     <View
-                        style={{ flexDirection: 'row', justifyContent: 'space-around', marginHorizontal: 110, marginBottom: 20 }}>
-                        <SmallDrum />
-                        <SmallDrum />
+                        style={{ flexDirection: 'row', justifyContent: 'space-around', marginHorizontal: 110, marginBottom: 70 }}>
+                        <TouchableHighlight
+                            activeOpacity={0.1}
+                            style={styles.smallDrum}>
+                            <TouchableOpacity style={styles.smallDrumOutter} onPress={this.onButtPress.bind(this)}>
+                                <Text style={styles.smallDrumInner} > </Text>
+                            </TouchableOpacity>
+                        </TouchableHighlight>
+                        <TouchableHighlight
+                            activeOpacity={0.1}
+                            style={styles.smallDrum}>
+                            <TouchableOpacity style={styles.smallDrumOutter} onPress={this.onButtPress2.bind(this)}>
+                                <Text style={styles.smallDrumInner} > </Text>
+                            </TouchableOpacity>
+                        </TouchableHighlight>
                     </View>
                     <View
-                        style={{ flexDirection: 'row', justifyContent: 'space-evenly', bottom: '15%' }}>
-                        <BigDrum />
-                        <BigDrum />
+                        style={{ flexDirection: 'row', justifyContent: 'space-evenly', bottom: '10%' }}>
+                        <TouchableHighlight
+                            activeOpacity={0.01}
+                            style={styles.bigDrum}
+                        >
+                            <TouchableOpacity style={styles.bigDrumOutter} onPress={this.onButtonPress.bind(this)}>
+                                <Text style={styles.bigDrumInner}></Text>
+                            </TouchableOpacity>
+                        </TouchableHighlight>
+                        <TouchableHighlight
+                            activeOpacity={0.01}
+                            style={styles.bigDrum}
+                        >
+                            <TouchableOpacity style={styles.bigDrumOutter} onPress={this.onButtonPress2.bind(this)}>
+                                <Text style={styles.bigDrumInner}></Text>
+                            </TouchableOpacity>
+                        </TouchableHighlight>
                     </View>
                 </View>
             </View>
@@ -32,60 +77,11 @@ class Drum extends Component {
 
 export default Drum
 
-class BigDrum extends Component {
-
-    onButtonPress() {
-        const requireAudio = require('../assets/Sound/Snare7.wav');
-        const s = new Sound(requireAudio, (e) => { if (e) { console.log('Error in SOUND', e); return; } s.play(() => s.release()); });
-    }
-
-    onButtPress() {
-        const requireAudio = require('../assets/Sound/Snare7.wav');
-        const s = new Sound(requireAudio, (e) => { if (e) { console.log('Error in SOUND', e); return; } s.play(() => s.release()); });
-    }
-    render() {
-        return (
-            <TouchableHighlight
-                activeOpacity={0.01}
-                colo
-                style={styles.bigDrum}
-            >
-                <TouchableOpacity style={styles.bigDrumOutter} onPress={this.onButtonPress.bind(this)}>
-                    <Text style={styles.bigDrumInner}></Text>
-                </TouchableOpacity>
-            </TouchableHighlight>
-        )
-    }
-}
-
-class SmallDrum extends Component {
-    onButtonPress() {
-        const requireAudio = require('../assets/Sound/Cymbal10.wav');
-        const s = new Sound(requireAudio, (e) => { if (e) { console.log('Error in SOUND', e); return; } s.play(() => s.release()); });
-    }
-
-    onButtPress() {
-        const requireAudio = require('../assets/Sound/Cymbal10.wav');
-        const s = new Sound(requireAudio, (e) => { if (e) { console.log('Error in SOUND', e); return; } s.play(() => s.release()); });
-    }
-    render() {
-        return (
-            <TouchableHighlight
-                activeOpacity={0.1}
-                style={styles.smallDrum}>
-                <TouchableOpacity style={styles.smallDrumOutter} onPress={this.onButtonPress.bind(this)}>
-                    <Text style={styles.smallDrumInner} > </Text>
-                </TouchableOpacity>
-            </TouchableHighlight>
-        )
-    }
-}
-
 const styles = StyleSheet.create({
     bigDrum: {
         width: '75%',
         height: 100,
-        top: 100,
+        top: 20,
         alignItems: 'center',
         justifyContent: 'center'
     },
@@ -132,5 +128,29 @@ const styles = StyleSheet.create({
         margin: 0,
         alignItems: 'center',
         justifyContent: 'center'
+    },
+    txtNumber: {
+        fontFamily: 'Roboto',
+        fontSize: 40,
+        color: 'maroon',
+        fontWeight: 'bold',
+        bottom: 100,
+        left: 150
+    },
+    txtNumber0: {
+        fontFamily: 'Roboto',
+        fontSize: 40,
+        color: 'maroon',
+        fontWeight: 'bold',
+        bottom: 100,
+        left: 187
+    },
+    txtNumber1: {
+        fontFamily: 'Roboto',
+        fontSize: 20,
+        color: 'maroon',
+        fontWeight: 'bold',
+        bottom: 100,
+        left: 160
     }
 })

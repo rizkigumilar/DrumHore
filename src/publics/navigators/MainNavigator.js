@@ -20,12 +20,7 @@ const StackNavigation = createStackNavigator({
     },
     Login,
     Register,
-    Play: {
-        screen: Play,
-        navigationOptions: {
-            header: null
-        }
-    },
+    Play,
     LeaderBoards
 }, {
         initialRouteName: 'Home'

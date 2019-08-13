@@ -11,7 +11,7 @@ class SideBar extends Component {
                 <StatusBar backgroundColor='transparent' barStyle='dark-content' />
                 <View style={styles.imageBackground} />
 
-                <Image source={require('../assets/135b131017ea0bf1b33a7168d176ada6.png')} style={styles.profileImage} resizeMode='cover' />
+                <Image source={require('../assets/Image/135b131017ea0bf1b33a7168d176ada6.png')} style={styles.profileImage} resizeMode='cover' />
 
                 <View style={styles.viewProfileData}>
                     <Text style={styles.profileData}>Ujang Smith</Text>
@@ -22,6 +22,7 @@ class SideBar extends Component {
                 <View style={styles.flhome}>
                     <TouchableOpacity onPress={() => this.props.navigation.navigate('LeaderBoards')}><Text style={styles.drawer}><Icon name="trophy" type="FontAwesome5" style={[styles.leaderBoardColor, styles.icon]} /> Leaderboards</Text></TouchableOpacity>
                     <TouchableOpacity onPress={() => this.props.navigation.navigate('Login')}><Text style={styles.drawer}><Icon name="user" type="FontAwesome5" style={[styles.leaderBoardColor, styles.icon]} /> Login </Text></TouchableOpacity>
+                    <Image source={require('../assets/Image/mcr2.png')} style={{ height: 240, width: 250, marginTop: 250 }} />
                 </View>
 
             </View>
