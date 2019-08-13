@@ -8,9 +8,9 @@ class Home extends Component {
         return (
             <View>
                 <Image source={require('../assets/Image/mcr4.png')} style={styles.backgroundTopRight} />
+                <Image source={require('../assets/Image/mcr11.jpg')} style={styles.backgroundTopLeft} />
                 <View style={styles.container}>
                     <Image style={styles.txtScore} source={require('../assets/Image/MCR.png')} />
-
                     <TouchableHighlight style={{ marginTop: 10 }}>
                         <Drum />
                     </TouchableHighlight>
@@ -32,6 +32,13 @@ const styles = StyleSheet.create({
         height: 150,
         top: 250,
         alignSelf: 'flex-end'
+    },
+    backgroundTopLeft: {
+        position: 'absolute',
+        width: 200,
+        height: 250,
+        top: 260,
+        alignSelf: 'flex-start'
     },
     backgroundBottomLeft: {
         width: 200,

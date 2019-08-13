@@ -9,6 +9,16 @@ import Play from '../../screens/Play'
 import SideBar from '../../components/Sidebar';
 import Avatar from '../../components/Avatar';
 import IconLeaderBoards from '../../components/IconLeaderboard';
+import AuthLoading from '../../components/Auth';
+
+const AuthStack = createStackNavigator({
+    Login: {
+        screen: Login,
+        navigationOptions: {
+            header: null
+        }
+    }
+})
 
 const StackNavigation = createStackNavigator({
     Home: {

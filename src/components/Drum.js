@@ -5,34 +5,139 @@ import Sound from 'react-native-sound';
 
 class Drum extends Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
+        this.state = {
+            hasil: 0,
+            combo: 5,
+            score: 0,
+            pattern: [1, 2, 1, 1, 3],
+            isNow: 0,
+            button: 1
+        };
     }
-    onButtonPress() {
+    onButtonPress = async () => {
+        await this.setState({
+            button: 1
+        })
         const requireAudio = require('../assets/Sound/Snare7.wav');
         const s = new Sound(requireAudio, (e) => { if (e) { console.log('Error in SOUND', e); return; } s.play(() => s.release()); });
+        if (this.state.pattern[this.state.isNow] === this.state.button) {
+            if (this.state.pattern.length === this.state.isNow + 1) {
+                await this.setState({
+                    combo: this.state.combo - 1
+                })
+            }
+            await this.setState({
+                score: this.state.score + 10,
+                isNow: this.state.isNow + 1
+            })
+
+        }
+        else {
+            await this.setState({
+                score: 0,
+                hasil: 0,
+                isNow: 0,
+                combo: 5
+            })
+        }
+
     }
-    onButtonPress2() {
+    onButtonPress2 = async () => {
+        await this.setState({
+            button: 4
+        })
         const requireAudio = require('../assets/Sound/Snare7.wav');
         const s = new Sound(requireAudio, (e) => { if (e) { console.log('Error in SOUND', e); return; } s.play(() => s.release()); });
+        if (this.state.pattern[this.state.isNow] === this.state.button) {
+            if (this.state.pattern.length === this.state.isNow + 1) {
+                await this.setState({
+                    combo: this.state.combo - 1
+                })
+            }
+            await this.setState({
+                score: this.state.score + 10,
+                isNow: this.state.isNow + 1
+            })
+
+        }
+        else {
+            await this.setState({
+                score: 0,
+                hasil: 0,
+                isNow: 0,
+                combo: 5
+            })
+        }
     }
-    onButtPress() {
+    onButtPress = async () => {
+        await this.setState({
+            button: 2
+        })
         const requireAudio = require('../assets/Sound/Cymbal10.wav');
         const s = new Sound(requireAudio, (e) => { if (e) { console.log('Error in SOUND', e); return; } s.play(() => s.release()); });
+        if (this.state.pattern[this.state.isNow] === this.state.button) {
+            if (this.state.pattern.length === this.state.isNow + 1) {
+                await this.setState({
+                    combo: this.state.combo - 1
+                })
+            }
+            await this.setState({
+                score: this.state.score + 10,
+                isNow: this.state.isNow + 1
+            })
+
+        }
+        else {
+            await this.setState({
+                score: 0,
+                hasil: 0,
+                isNow: 0,
+                combo: 5
+            })
+        }
     }
-    onButtPress2() {
+    onButtPress2 = async () => {
+        await this.setState({
+            button: 3
+        })
         const requireAudio = require('../assets/Sound/Cymbal10.wav');
         const s = new Sound(requireAudio, (e) => { if (e) { console.log('Error in SOUND', e); return; } s.play(() => s.release()); });
+        if (this.state.pattern[this.state.isNow] === this.state.button) {
+            if (this.state.pattern.length === this.state.isNow + 1) {
+                await this.setState({
+                    combo: this.state.combo - 1
+                })
+            }
+            await this.setState({
+                score: this.state.score + 10,
+                isNow: this.state.isNow + 1
+            })
+
+        }
+        else {
+            await this.setState({
+                score: 0,
+                hasil: 0,
+                isNow: 0,
+                combo: 5
+            })
+        }
     }
-
-
+    setScore() {
+        this.setState(() => {
+            this.state.button = 1
+        })
+        console.log("setScore " + this.state.button)
+    }
     render() {
         return (
             <View style={styles.container}>
                 <View style={{ top: '2%' }}>
                     <Text style={styles.txtNumber}>Score</Text>
-                    <Text style={styles.txtNumber1}>Combo : 5</Text>
-                    <Text style={styles.txtNumber0}>0</Text>
+                    <Text style={styles.txtNumber1}>Combo : {this.state.combo}</Text>
+                    <Text style={styles.txtNumber0}>{this.state.score}</Text>
                     <View
                         style={{ flexDirection: 'row', justifyContent: 'space-around', marginHorizontal: 110, marginBottom: 70 }}>
                         <TouchableHighlight

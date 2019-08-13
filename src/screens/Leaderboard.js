@@ -12,59 +12,59 @@ import Leaderboard from 'react-native-leaderboard'
 import { getLeaderboard } from '../publics/redux/actions/score';
 
 class boards extends Component {
-    state = {
-        data: [
-            { userName: 'Ujanx', highScore: 520056 },
-            { userName: 'Jajang', highScore: 120874 },
-            { userName: 'Samsul', highScore: 145874 },
-        ]
-    }
     // state = {
-    //     data: [],
-    //     index: '',
-    //     userid: null,
-    //     name: '',
-    //     scores: ''
-    // };
-    // constructor(props) {
-    //     super(props);
-    // }
-
-    // componentDidMount = async () => {
-    //     await this.props.dispatch(getLeaderboard());
-    //     this.setState({
-    //         data: this.props.data,
-    //     });
-    //     AsyncStorage.getItem('userid').then((value) => {
-    //         this.setState({ userid: value })
-    //     });
-    //     AsyncStorage.getItem('name').then((value) => {
-    //         this.setState({ name: value })
-    //     });
-    //     this.subs = [
-    //         this.props.navigation.addListener('willBlur', async () => {
-    //             await this.props.dispatch(getLeaderboard());
-    //             this.setState({
-    //                 data: this.props.data,
-    //             })
-    //         }),
-    //         this.props.navigation.addListener('willFocus', async () => {
-    //             await this.props.dispatch(getLeaderboard());
-    //             this.setState({
-    //                 data: this.props.data,
-    //             })
-    //         }),
+    //     data: [
+    //         { userName: 'Ujanx', highScore: 520056 },
+    //         { userName: 'Jajang', highScore: 120874 },
+    //         { userName: 'Samsul', highScore: 145874 },
     //     ]
-    // };
+    // }
+    state = {
+        data: [],
+        index: '',
+        userid: null,
+        name: '',
+        scores: ''
+    };
+    constructor(props) {
+        super(props);
+    }
 
-    // componentWillUnmount = () => {
-    //     this.subs.forEach(sub => {
-    //         sub.remove();
-    //     });
-    // };
+    componentDidMount = async () => {
+        await this.props.dispatch(getLeaderboard());
+        this.setState({
+            data: this.props.data,
+        });
+        AsyncStorage.getItem('userid').then((value) => {
+            this.setState({ userid: value })
+        });
+        AsyncStorage.getItem('name').then((value) => {
+            this.setState({ name: value })
+        });
+        this.subs = [
+            this.props.navigation.addListener('willBlur', async () => {
+                await this.props.dispatch(getLeaderboard());
+                this.setState({
+                    data: this.props.data,
+                })
+            }),
+            this.props.navigation.addListener('willFocus', async () => {
+                await this.props.dispatch(getLeaderboard());
+                this.setState({
+                    data: this.props.data,
+                })
+            }),
+        ]
+    };
+
+    componentWillUnmount = () => {
+        this.subs.forEach(sub => {
+            sub.remove();
+        });
+    };
 
     render() {
-        console.log("props " + this.props.data)
+        console.log("props " + this.props.score)
         console.log("state " + this.state.data)
         return (
             <View style={style.container}>
@@ -97,8 +97,8 @@ class boards extends Component {
                 <View>
                     <Leaderboard
                         data={this.state.data}
-                        sortBy='highScore'
-                        labelBy='userName' />
+                        sortBy='score'
+                        labelBy='username' />
                 </View>
             </View>
         )
@@ -106,7 +106,7 @@ class boards extends Component {
 }
 const mapStateToProps = state => {
     return {
-        data: state.data,
+        data: state.score.dataList,
     };
 };
 
