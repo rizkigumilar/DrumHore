@@ -47,9 +47,6 @@ class Login extends Component {
         AsyncStorage.getItem('name').then((value) => {
             this.setState({ name: value })
         })
-        AsyncStorage.getItem('idNum').then((value) => {
-            this.setState({ idNum: value })
-        })
         AsyncStorage.getItem('email').then((value) => {
             this.setState({ email: value })
         })
@@ -73,7 +70,14 @@ class Login extends Component {
                     'Login',
                     'Login Success',
                     [
-                        { text: 'OK', onPress: () => this.props.navigation.navigate('Home') },
+                        {
+                            text: 'OK', onPress: () => this.props.navigation.navigate('Home', {
+                                userid: this.state.userid,
+                                token: this.state.token,
+                                name: this.state.name,
+                                email: this.state.email
+                            })
+                        },
                     ],
                 );
             })
@@ -100,7 +104,9 @@ class Login extends Component {
                     Alert.alert(
                         'Logout',
                         'Logout success', [
-                            { text: 'OK', onPress: () => this.props.navigation.navigate('Home') }
+                            {
+                                text: 'OK', onPress: () => this.props.navigation.navigate('Home')
+                            }
                         ]
                     )
                 })
@@ -119,11 +125,6 @@ class Login extends Component {
                     <NavigationEvents
                         onWillFocus={payload => AsyncStorage.getItem('name').then((value) => {
                             this.setState({ name: value })
-                        })}
-                    />
-                    <NavigationEvents
-                        onWillFocus={payload => AsyncStorage.getItem('idNum').then((value) => {
-                            this.setState({ idNum: value })
                         })}
                     />
                     <NavigationEvents
@@ -168,15 +169,24 @@ class Login extends Component {
                                     <Text>Register</Text>
                                 </TouchableHighlight>
                                 <Image style={styles.logo} source={Logo} />
+                                <TouchableHighlight style={styles.buttonContainer} onPress={() => this.props.navigation.navigate('Home')}>
+                                    <Text>Skip</Text>
+                                </TouchableHighlight>
                             </View>) : (<View>
-                                <View >
-                                    <View>
-                                        <TouchableHighlight onPress={del.bind(this)} style={[styles.buttonContainer, styles.loginButton]}>
-                                            <Text style={{ color: 'white', fontSize: 18 }}>Logout</Text>
-                                        </TouchableHighlight>
+                                <View style={{ marginTop: 200 }}>
+                                    <Image style={styles.avatar} source={require('../assets/Image/mcr4.png')} />
+                                    <View style={styles.body}>
+                                        <View style={styles.bodyContent}>
+                                            <Text style={styles.name}>{this.state.name}</Text>
+                                            <Text style={styles.info}>{this.state.email}</Text>
+                                            <Text style={styles.info}>{this.state.idNum}</Text>
+                                            <Text style={styles.description}>Dream Big, Start Small, Act Now</Text>
+                                        </View>
                                     </View>
+                                    <TouchableHighlight onPress={del.bind(this)} style={[styles.buttonContainerOut, styles.loginButton]}>
+                                        <Text style={{ color: 'white', fontSize: 18 }}>Logout</Text>
+                                    </TouchableHighlight>
                                 </View>
-
                             </View>)}
                     </View>
                 </View>
@@ -239,6 +249,17 @@ const styles = StyleSheet.create({
         width: 250,
         borderRadius: 30,
     },
+    buttonContainerOut: {
+        height: 45,
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginBottom: 30,
+        width: 250,
+        borderRadius: 30,
+        marginTop: 90,
+        left: 70
+    },
     loginButton: {
         backgroundColor: "#FF5500",
     },
@@ -281,7 +302,7 @@ const styles = StyleSheet.create({
         marginTop: 5
     },
     description: {
-        fontSize: 16,
+        fontSize: 36,
         color: "#696969",
         marginTop: 10,
         textAlign: 'center',

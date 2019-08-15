@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Provider } from 'react-redux';
-import { View, Text, AsyncStorage as storage } from 'react-native';
+import { AsyncStorage } from 'react-native';
 import store from './src/publics/redux/store'
 import Splash from './src/screens/Splash';
 
@@ -16,7 +16,7 @@ class App extends Component {
       view: <Splash />
     }
 
-    storage.getItem('token', (error, result) => {
+    AsyncStorage.getItem('token', (error, result) => {
       if (result) {
         this.setState({
           token: result
@@ -24,7 +24,7 @@ class App extends Component {
       }
     })
 
-    storage.getItem('iduser', (error, result) => {
+    AsyncStorage.getItem('iduser', (error, result) => {
       if (result) {
         this.setState({
           iduser: result

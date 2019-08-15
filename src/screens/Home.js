@@ -1,10 +1,40 @@
 import React, { Component } from 'react'
-import { Text, View, StyleSheet, Image, TouchableHighlight } from 'react-native'
+import { Text, View, StyleSheet, Image, TouchableHighlight, AsyncStorage } from 'react-native'
+import { getUserId } from '../publics/redux/actions/user';
+import { connect } from 'react-redux'
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 
 class Home extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            user: [],
+            userid: '',
+            name: '',
+            email: '',
+            token: '',
+
+        }
+    }
+
+    componentDidMount = async () => {
+        AsyncStorage.getItem('userid').then((value) => {
+            this.setState({ userid: value })
+        })
+        AsyncStorage.getItem('name').then((value) => {
+            this.setState({ name: value })
+        })
+        AsyncStorage.getItem('email').then((value) => {
+            this.setState({ email: value })
+        })
+        AsyncStorage.getItem('jwToken').then((value) => {
+            this.setState({ token: value })
+        })
+    }
     render() {
+        console.log(this.state.userid)
         return (
             <View>
                 <Image source={require('../assets/Image/mcr4.png')} style={styles.backgroundTopRight} />
@@ -22,8 +52,12 @@ class Home extends Component {
     }
 }
 
-
-export default Home
+const mapStateToProps = state => {
+    return {
+        user: state.user
+    };
+};
+export default connect(mapStateToProps)(Home)
 
 const styles = StyleSheet.create({
     backgroundTopRight: {

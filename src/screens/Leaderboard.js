@@ -9,7 +9,8 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux';
 import Leaderboard from 'react-native-leaderboard'
-import { getLeaderboard } from '../publics/redux/actions/score';
+import { getLeaderboard, getScoreId } from '../publics/redux/actions/score';
+
 
 class boards extends Component {
     // state = {
@@ -19,53 +20,30 @@ class boards extends Component {
     //         { userName: 'Samsul', highScore: 145874 },
     //     ]
     // }
-    state = {
-        data: [],
-        index: '',
-        userid: null,
-        name: '',
-        scores: ''
-    };
     constructor(props) {
         super(props);
+        this.state = {
+            data: [],
+            userData: {},
+            user: {}
+        };
     }
 
     componentDidMount = async () => {
         await this.props.dispatch(getLeaderboard());
         this.setState({
             data: this.props.data,
+            user: this.props.user
         });
-        AsyncStorage.getItem('userid').then((value) => {
-            this.setState({ userid: value })
+        await this.props.dispatch(getScoreId(this.props.navigation.getParam('userid')));
+        this.setState({
+            userData: this.props.userid
         });
-        AsyncStorage.getItem('name').then((value) => {
-            this.setState({ name: value })
-        });
-        this.subs = [
-            this.props.navigation.addListener('willBlur', async () => {
-                await this.props.dispatch(getLeaderboard());
-                this.setState({
-                    data: this.props.data,
-                })
-            }),
-            this.props.navigation.addListener('willFocus', async () => {
-                await this.props.dispatch(getLeaderboard());
-                this.setState({
-                    data: this.props.data,
-                })
-            }),
-        ]
-    };
 
-    componentWillUnmount = () => {
-        this.subs.forEach(sub => {
-            sub.remove();
-        });
     };
 
     render() {
-        console.log("props " + this.props.score)
-        console.log("state " + this.state.data)
+        console.log(this.state.userData)
         return (
             <View style={style.container}>
                 <View style={style.header}>
@@ -107,6 +85,8 @@ class boards extends Component {
 const mapStateToProps = state => {
     return {
         data: state.score.dataList,
+        userid: state.score.listId,
+        user: state.score.dataList[0]
     };
 };
 

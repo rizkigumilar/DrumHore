@@ -1,95 +1,62 @@
 import React, { Component } from 'react'
 import { Text, View, StyleSheet, Image, StatusBar, AsyncStorage } from 'react-native'
 import { connect } from 'react-redux';
-import { TouchableOpacity, FlatList } from 'react-native-gesture-handler';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Icon } from 'native-base';
-import { NavigationEvents } from 'react-navigation';
+
+
 
 
 class SideBar extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            userid: null,
+            user: [],
+            userid: '',
             name: '',
-            email: '',
-            token: ''
-        }
+            token: '',
+        };
+        AsyncStorage.getItem('userid', (error, result) => {
+            if (result) {
+                this.setState({
+                    userid: result,
+                });
+            }
+        });
+        AsyncStorage.getItem('name', (error, result) => {
+            if (result) {
+                this.setState({
+                    name: result,
+                });
+            }
+        });
     }
 
-    componentDidMount = async () => {
-        const userid = this.state.userid
-        await this.props.dispatch(getUserId(userid));
-        this.setState({
-            user: this.props.user,
-        })
-        AsyncStorage.getItem('userid').then((value) => {
-            this.setState({ userid: value })
-        })
-        AsyncStorage.getItem('name').then((value) => {
-            this.setState({ name: value })
-        })
-        AsyncStorage.getItem('email').then((value) => {
-            this.setState({ email: value })
-        })
-        AsyncStorage.getItem('jwToken').then((value) => {
-            this.setState({ token: value })
-        })
-    };
-
     render() {
-        console.log('token ' + this.state.token)
-        console.log('userid ' + this.state.userid)
-        console.log('name ' + this.state.name)
-
+        console.log(this.state.userid)
+        console.log(this.state.name)
 
         return (
             <View>
-                <NavigationEvents
-                    onWillFocus={payload => AsyncStorage.getItem('userid').then((value) => {
-                        this.setState({ userid: value })
-                    })}
-                />
-                <NavigationEvents
-                    onWillFocus={payload => AsyncStorage.getItem('name').then((value) => {
-                        this.setState({ name: value })
-                    })}
-                />
-                <NavigationEvents
-                    onWillFocus={payload => AsyncStorage.getItem('email').then((value) => {
-                        this.setState({ email: value })
-                    })}
-                />
-                <NavigationEvents
-                    onWillFocus={payload => AsyncStorage.getItem('jwToken').then((value) => {
-                        this.setState({ token: value })
-                    })}
-                />
                 <StatusBar backgroundColor='transparent' barStyle='dark-content' />
                 <View style={styles.imageBackground} />
-                <Image source={require('../assets/Image/135b131017ea0bf1b33a7168d176ada6.png')} style={styles.profileImage} resizeMode='cover' />
-
-                <View style={styles.viewProfileData}>
-                    <Text style={styles.profileData}>{this.state.name}</Text>
-                    <Text style={styles.profileData}>{this.state.email}</Text>
-                    <Text style={styles.profileData}>Score: 521</Text>
+                <Image source={require('../assets/Image/MCR.png')} style={styles.profileImage} resizeMode='cover' />
+                <View>
+                    <Text style={styles.profileData}> Hello {this.state.name}</Text>
                 </View>
-
                 <View style={styles.flhome}>
                     <TouchableOpacity onPress={() => this.props.navigation.navigate('LeaderBoards')}><Text style={styles.drawer}><Icon name="trophy" type="FontAwesome5" style={[styles.leaderBoardColor, styles.icon]} /> Leaderboards</Text></TouchableOpacity>
-                    {this.state.userid == null ?
-                        (<TouchableOpacity onPress={() => this.props.navigation.navigate('Login')}><Text style={styles.drawer}><Icon name="user" type="FontAwesome5" style={[styles.leaderBoardColor, styles.icon]} /> Login </Text></TouchableOpacity>) : (<TouchableOpacity onPress={() => this.props.navigation.navigate('Login')}><Text style={styles.drawer}><Icon name="user" type="FontAwesome5" style={[styles.leaderBoardColor, styles.icon]} /> Logout </Text></TouchableOpacity>)}
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate('Login')}><Text style={styles.drawer}><Icon name="user" type="FontAwesome5" style={[styles.leaderBoardColor, styles.icon]} /> Profile </Text></TouchableOpacity>
                     <Image source={require('../assets/Image/mcr2.png')} style={{ height: 240, width: 250, marginTop: 250 }} />
                 </View>
-
             </View>
         )
     }
-}
 
+}
 const mapStateToProps = state => {
     return {
-        user: state.user
+        user: state.user.userList
     };
 };
 export default connect(mapStateToProps)(SideBar)
@@ -102,14 +69,11 @@ const styles = StyleSheet.create({
     },
     profileImage: {
         position: 'absolute',
-        borderWidth: 2,
-        borderColor: 'black',
         alignSelf: 'flex-start',
-        left: 100,
         top: 10,
-        width: 80,
-        height: 80,
-        borderRadius: 150
+        width: '100%',
+        height: 150,
+        borderRadius: 0
     },
     viewProfileData: {
         position: 'absolute',
@@ -119,7 +83,7 @@ const styles = StyleSheet.create({
     profileData: {
         color: 'black',
         fontWeight: 'bold',
-        fontSize: 14,
+        fontSize: 24,
         marginVertical: 1,
         left: 75
     },
@@ -130,7 +94,7 @@ const styles = StyleSheet.create({
     },
     drawer: {
         margin: 15,
-        fontWeight: "600",
+        fontWeight: "bold",
         color: "#000",
         fontSize: 15,
     },

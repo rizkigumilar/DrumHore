@@ -1,4 +1,4 @@
-import { createAppContainer, createDrawerNavigator, createStackNavigator, HeaderBackButton } from 'react-navigation'
+import { createAppContainer, createDrawerNavigator, createStackNavigator, createSwitchNavigator } from 'react-navigation'
 import React, { Components } from 'react'
 
 import Home from '../../screens/Home'
@@ -31,7 +31,12 @@ const StackNavigation = createStackNavigator({
     Login,
     Register,
     Play,
-    LeaderBoards
+    LeaderBoards: {
+        screen: LeaderBoards,
+        navigationOptions: {
+            title: "Leaderboards"
+        }
+    }
 }, {
         initialRouteName: 'Home'
     })
@@ -48,4 +53,11 @@ const MainNavigation = createDrawerNavigator({
         },
     })
 
-export default createAppContainer(MainNavigation)
+export default createAppContainer(createSwitchNavigator(
+    {
+        AuthLoading: AuthLoading,
+        App: MainNavigation,
+        Auth: AuthStack
+    }
+
+))

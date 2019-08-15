@@ -14,7 +14,13 @@ export default class AuthLoading extends Component {
     }
 
     _bootstrapAsync = async () => {
-        const userToken = await AsyncStorage.getItem('token');
+        const userToken = await AsyncStorage.getItem('jwToken', (error, result) => {
+            if (result) {
+                this.setState({
+                    token: result,
+                });
+            }
+        });
 
 
         this.props.navigation.navigate(userToken ? 'App' : 'Auth');
