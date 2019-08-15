@@ -41,9 +41,6 @@ class SideBar extends Component {
                 <StatusBar backgroundColor='transparent' barStyle='dark-content' />
                 <View style={styles.imageBackground} />
                 <Image source={require('../assets/Image/MCR.png')} style={styles.profileImage} resizeMode='cover' />
-                <View>
-                    <Text style={styles.profileData}> Hello {this.state.name}</Text>
-                </View>
                 <View style={styles.flhome}>
                     <TouchableOpacity onPress={() => this.props.navigation.navigate('LeaderBoards')}><Text style={styles.drawer}><Icon name="trophy" type="FontAwesome5" style={[styles.leaderBoardColor, styles.icon]} /> Leaderboards</Text></TouchableOpacity>
                     <TouchableOpacity onPress={() => this.props.navigation.navigate('Login')}><Text style={styles.drawer}><Icon name="user" type="FontAwesome5" style={[styles.leaderBoardColor, styles.icon]} /> Profile </Text></TouchableOpacity>

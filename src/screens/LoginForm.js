@@ -170,7 +170,7 @@ class Login extends Component {
                                 </TouchableHighlight>
                                 <Image style={styles.logo} source={Logo} />
                                 <TouchableHighlight style={styles.buttonContainer} onPress={() => this.props.navigation.navigate('Home')}>
-                                    <Text>Skip</Text>
+                                    <Text style={{ fontSize: 18, left: 50 }}>Skip -->></Text>
                                 </TouchableHighlight>
                             </View>) : (<View>
                                 <View style={{ marginTop: 200 }}>

@@ -17,6 +17,7 @@ class Drum extends Component {
             pattern: [1, 2, 1, 2, 1, 3, 4, 3],
             isNow: 0,
             button: 1,
+            timer: null,
             id: '',
             token: ''
         };
@@ -83,6 +84,29 @@ class Drum extends Component {
             );
 
         }
+        if (this.state.timer) {
+            clearTimeout(this.state.timer); //cancel the previous timer.
+            this.setState({
+                timer: null
+            })
+        }
+        await this.setState({
+            timer: setTimeout(() => {
+                this.setState({
+                    button: this.state.button * 0
+                })
+                Alert.alert(
+                    'Time out !!!',
+                    `Your Score : ${this.state.score}`, // <- this part is optional, you can pass an empty string
+                    [
+                        {
+                            text: 'Save Score',
+                            onPress: () => this.add()
+                        },
+                    ],
+                );
+            }, 3000)
+        })
         await this.setState({
             button: this.state.pattern[this.state.isNow]
         })
@@ -119,6 +143,29 @@ class Drum extends Component {
             );
 
         }
+        if (this.state.timer) {
+            clearTimeout(this.state.timer); //cancel the previous timer.
+            this.setState({
+                timer: null
+            })
+        }
+        await this.setState({
+            timer: setTimeout(() => {
+                this.setState({
+                    button: this.state.button * 0
+                })
+                Alert.alert(
+                    'Time out !!!',
+                    `Your Score : ${this.state.score}`, // <- this part is optional, you can pass an empty string
+                    [
+                        {
+                            text: 'Save Score',
+                            onPress: () => this.add()
+                        },
+                    ],
+                );
+            }, 3000)
+        })
         await this.setState({
             button: this.state.pattern[this.state.isNow]
         })
@@ -153,6 +200,29 @@ class Drum extends Component {
                 ],
             );
         }
+        if (this.state.timer) {
+            clearTimeout(this.state.timer); //cancel the previous timer.
+            this.setState({
+                timer: null
+            })
+        }
+        await this.setState({
+            timer: setTimeout(() => {
+                this.setState({
+                    button: this.state.button * 0
+                })
+                Alert.alert(
+                    'Time out !!!',
+                    `Your Score : ${this.state.score}`, // <- this part is optional, you can pass an empty string
+                    [
+                        {
+                            text: 'Save Score',
+                            onPress: () => this.add()
+                        },
+                    ],
+                );
+            }, 3000)
+        })
         await this.setState({
             button: this.state.pattern[this.state.isNow]
         })
@@ -187,6 +257,29 @@ class Drum extends Component {
                 ],
             );
         }
+        if (this.state.timer) {
+            clearTimeout(this.state.timer); //cancel the previous timer.
+            this.setState({
+                timer: null
+            })
+        }
+        await this.setState({
+            timer: setTimeout(() => {
+                this.setState({
+                    button: this.state.button * 0
+                })
+                Alert.alert(
+                    'Time out !!!',
+                    `Your Score : ${this.state.score}`, // <- this part is optional, you can pass an empty string
+                    [
+                        {
+                            text: 'Save Score',
+                            onPress: () => this.add()
+                        },
+                    ],
+                );
+            }, 3000)
+        })
         await this.setState({
             button: this.state.pattern[this.state.isNow]
         })
