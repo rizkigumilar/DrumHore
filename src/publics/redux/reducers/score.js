@@ -3,6 +3,7 @@ const initialState = {
     isLoading: false,
     isFulfilled: false,
     isRejected: false,
+    listId: []
 }
 
 const data = (state = initialState, action) => {
@@ -21,6 +22,7 @@ const data = (state = initialState, action) => {
                 isRejected: true
             };
         case 'GET_SCORES_FULFILLED':
+            console.log('list')
             return {
                 ...state,
                 isLoading: false,
@@ -41,11 +43,12 @@ const data = (state = initialState, action) => {
                 isRejected: true
             };
         case 'GET_SCORE_ID_FULFILLED':
+            console.log(action.payload.data.result)
             return {
                 ...state,
                 isLoading: false,
                 isFulfilled: true,
-                listId: action.payload.data.result
+                listId: action.payload.data
             };
         case 'POST_SCORE_PENDING':
             return {

@@ -5,7 +5,7 @@ class Splash extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <Image source={require('../assets/Image/drums-transparant-png-8.png')} style={styles.imagess} />
+                <Image source={require('../assets/Image/logo.jpg')} style={styles.imagess} />
             </View>
         )
     }
@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     },
     imagess: {
         position: 'absolute',
-        width: 450,
+        width: 380,
         height: 350,
     },
 })

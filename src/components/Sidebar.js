@@ -33,8 +33,7 @@ class SideBar extends Component {
     }
 
     render() {
-        console.log(this.state.userid)
-        console.log(this.state.name)
+
 
         return (
             <View>

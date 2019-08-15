@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 
-let url = `http://192.168.6.191:3003`
+let url = `https://drumhore.herokuapp.com`
 
 
 export const getLeaderboard = () => {
@@ -36,6 +36,20 @@ export const postScores = (userid, token, data) => {
             {
                 headers: {
                     "authorization": "x-control-app",
+                    "x-access-token": `bearer: ${token}`,
+                    "x-control-user": userid
+                }
+            })
+    }
+}
+export const updateScore = (userid, token, data) => {
+    console.log(data)
+    return {
+        type: 'UPDATE_SCORE',
+        payload: axios.patch(`${url}/score`, data,
+            {
+                headers: {
+                    "authorization": "x-control-user",
                     "x-access-token": `bearer: ${token}`,
                     "x-control-user": userid
                 }

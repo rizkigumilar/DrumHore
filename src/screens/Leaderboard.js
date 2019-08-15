@@ -50,26 +50,20 @@ class boards extends Component {
                     <View style={style.text1}>
                         <Text style={{
                             fontSize: 20,
-                            color: 'black',
-                        }}>Rank </Text>
-                        <Text style={{
-                            fontSize: 20,
-                            color: 'black',
-                        }}>100</Text>
+                            color: 'yellow',
+                            fontStyle: 'italic',
+                        }}>Drum Hore </Text>
                     </View>
                     <View>
                         <Image style={style.img}
-                            source={require('../assets/Image/135b131017ea0bf1b33a7168d176ada6.png')} />
+                            source={require('../assets/Image/mcr4.png')} />
                     </View>
                     <View style={style.text2}>
                         <Text style={{
                             fontSize: 20,
-                            color: 'black',
-                        }}>Point </Text>
-                        <Text style={{
-                            fontSize: 20,
-                            color: 'black',
-                        }}>1000</Text>
+                            color: 'yellow',
+                            fontStyle: 'italic',
+                        }}>Drum Hore </Text>
                     </View>
                 </View>
                 <View>
@@ -116,12 +110,12 @@ const style = StyleSheet.create({
     },
     text1: {
         position: 'absolute',
-        marginVertical: '12%',
-        marginHorizontal: '12%'
+        marginVertical: '17%',
+        marginHorizontal: '8%'
     },
     text2: {
         position: 'absolute',
-        marginVertical: '12%',
-        marginLeft: '73%',
+        marginVertical: '17%',
+        marginLeft: '61%',
     }
 })

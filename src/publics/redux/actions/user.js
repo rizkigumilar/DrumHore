@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { AsyncStorage } from 'react-native'
-let url = `http://192.168.6.191:3003`
+let url = `https://drumhore.herokuapp.com`
 
 export const getUsers = () => {
     return {
@@ -76,11 +76,15 @@ export const login = (data) => {
     }
 }
 
-export const logout = (userid) => {
+export const getScoreId = (userid) => {
     return {
-        type: 'LOGOUT', userid,
-        payload: axios.patch(`http://192.168.6.191:3001/token/${userid}`)
-
+        type: 'GET_SCORES_ID',
+        payload: axios.get(`${url}/scores/${Number(userid)}`,
+            {
+                headers: {
+                    "authorization": "x-control-app"
+                }
+            })
     }
 }
 

@@ -3,6 +3,7 @@ const initialState = {
     isLoading: false,
     isFulfilled: false,
     isRejected: false,
+    listId: []
 }
 
 const user = (state = initialState, action) => {
@@ -68,27 +69,27 @@ const user = (state = initialState, action) => {
                 isFulfilled: true,
                 userList: action.payload.data.result
             };
-        case 'GET_SCORE_PENDING':
+        case 'GET_SCORE_ID_PENDING':
             return {
                 ...state,
                 isLoading: true,
                 isFulfilled: false,
                 isRejected: false
             };
-        case 'GET_SCORES_REJECTED':
+        case 'GET_SCORE_ID_REJECTED':
             return {
                 ...state,
                 isLoading: false,
                 isRejected: true
             };
-        case 'GET_SCORES_FULFILLED':
+        case 'GET_SCORE_ID_FULFILLED':
+            console.log(action.payload.data.result)
             return {
                 ...state,
                 isLoading: false,
                 isFulfilled: true,
-                userList: action.payload.data.result
+                listId: action.payload.data
             };
-
         default:
             return state;
     }

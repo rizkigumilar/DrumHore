@@ -5,6 +5,7 @@ import Home from '../../screens/Home'
 import Login from '../../screens/LoginForm'
 import Register from '../../screens/Register'
 import LeaderBoards from '../../screens/Leaderboard'
+import Training from '../../screens/Training';
 import Play from '../../screens/Play'
 import SideBar from '../../components/Sidebar';
 import Avatar from '../../components/Avatar';
@@ -31,6 +32,7 @@ const StackNavigation = createStackNavigator({
     Login,
     Register,
     Play,
+    Training,
     LeaderBoards: {
         screen: LeaderBoards,
         navigationOptions: {
