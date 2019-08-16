@@ -20,7 +20,7 @@ class Drum extends Component {
             timer: null,
             id: '',
             token: '',
-            data: this.props.navigation.getParam('data'),
+
         };
         AsyncStorage.getItem('userid', (error, result) => {
             if (result) {
